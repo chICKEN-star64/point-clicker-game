@@ -13,7 +13,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem;
 }
 
 /* Galaxy Background */
@@ -83,9 +83,9 @@ body::before {
 
 .container {
     max-width: 800px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
     background-color: rgba(45, 45, 45, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -103,22 +103,23 @@ body::before {
 
 .points-display {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding: 1rem;
-    background-color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.8);
     border-radius: 10px;
     animation: slideIn 0.8s ease-out;
 }
 
 .points-display h2 {
     color: #4a90e2;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
 }
 
 .points-display p {
     color: #cccccc;
     margin: 0.5rem 0;
+    font-size: 1rem;
 }
 
 h1 {
@@ -127,12 +128,14 @@ h1 {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: slideIn 0.8s ease-out;
+    font-size: 1.8rem;
 }
 
 p {
     color: #cccccc;
     margin-bottom: 1.5rem;
     animation: slideIn 0.8s ease-out 0.2s backwards;
+    font-size: 1rem;
 }
 
 button {
@@ -148,6 +151,9 @@ button {
     animation: slideIn 0.8s ease-out 0.4s backwards;
     position: relative;
     overflow: hidden;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
 }
 
 button:hover:not(:disabled) {
@@ -169,24 +175,26 @@ button:disabled {
 .upgrades-section {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid #3d3d3d;
+    border-top: 1px solid rgba(61, 61, 61, 0.5);
 }
 
 .upgrades-section h3 {
     color: #4a90e2;
     margin-bottom: 1rem;
     text-align: center;
+    font-size: 1.4rem;
 }
 
 .upgrade-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    background-color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.8);
     border-radius: 8px;
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .upgrade-item:hover {
@@ -195,29 +203,33 @@ button:disabled {
 
 .upgrade-btn {
     padding: 0.5rem 1rem;
-    margin: 0;
+    margin: 0.5rem 0 0;
     font-size: 0.9rem;
+    width: auto;
+    min-width: 120px;
 }
 
 .count {
     color: #4a90e2;
     font-weight: bold;
+    margin: 0.5rem 0;
 }
 
 .rebirth-section {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid #3d3d3d;
+    border-top: 1px solid rgba(61, 61, 61, 0.5);
     text-align: center;
 }
 
 .rebirth-section h3 {
     color: #ff6b6b;
     margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
 .rebirth-info {
-    background-color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.8);
     padding: 1rem;
     border-radius: 8px;
     margin: 1rem 0;
@@ -228,6 +240,8 @@ button:disabled {
     font-size: 1.2rem;
     padding: 1rem 2rem;
     margin: 1rem auto;
+    width: auto;
+    min-width: 200px;
 }
 
 .rebirth-btn:hover:not(:disabled) {
@@ -238,12 +252,13 @@ button:disabled {
 .rebirth-upgrades {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #3d3d3d;
+    border-top: 1px solid rgba(61, 61, 61, 0.5);
 }
 
 .rebirth-upgrades h4 {
     color: #ff6b6b;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 @keyframes fadeIn {
@@ -263,6 +278,50 @@ button:disabled {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 0.8rem;
+    }
+
+    .points-display h2 {
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .upgrade-item {
+        padding: 0.8rem;
+    }
+
+    .upgrade-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .rebirth-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    button:hover:not(:disabled) {
+        transform: none;
+    }
+
+    .upgrade-item:hover {
+        transform: none;
     }
 }
 

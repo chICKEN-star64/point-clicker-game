@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let eternalClickerCount = 0;
     let immortalClickerCount = 0;
     let ascendedClickerCount = 0;
+    let prestigeLevel = 0;
+    let transcendentClickerCount = 0;
+    let enlightenedClickerCount = 0;
+    let nirvanaClickerCount = 0;
     let autoClickerInterval;
     let pointsPerSecond = 0;
     let multiplier = 1;
@@ -100,7 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             rebirthCount,
             eternalClickerCount,
             immortalClickerCount,
-            ascendedClickerCount
+            ascendedClickerCount,
+            prestigeLevel,
+            transcendentClickerCount,
+            enlightenedClickerCount,
+            nirvanaClickerCount
         };
         localStorage.setItem('clickerGame', JSON.stringify(gameState));
     }
@@ -133,6 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
             eternalClickerCount = gameState.eternalClickerCount || 0;
             immortalClickerCount = gameState.immortalClickerCount || 0;
             ascendedClickerCount = gameState.ascendedClickerCount || 0;
+            prestigeLevel = gameState.prestigeLevel || 0;
+            transcendentClickerCount = gameState.transcendentClickerCount || 0;
+            enlightenedClickerCount = gameState.enlightenedClickerCount || 0;
+            nirvanaClickerCount = gameState.nirvanaClickerCount || 0;
         }
     }
 
@@ -200,6 +212,20 @@ document.addEventListener('DOMContentLoaded', () => {
         infinityClickerBtn.disabled = points < 10000;
         godClickerBtn.disabled = points < 50000;
         rebirthButton.disabled = points < 1000000000;
+        
+        document.getElementById('prestigeLevel').textContent = prestigeLevel;
+        document.getElementById('prestigeMultiplier').textContent = (1 + prestigeLevel * 0.5).toFixed(1);
+        document.getElementById('transcendentClickerCount').textContent = transcendentClickerCount;
+        document.getElementById('enlightenedClickerCount').textContent = enlightenedClickerCount;
+        document.getElementById('nirvanaClickerCount').textContent = nirvanaClickerCount;
+        
+        // Update prestige button
+        document.getElementById('prestigeBtn').disabled = rebirthCount < 100;
+        
+        // Update prestige upgrade buttons
+        document.querySelector('#transcendentClicker .upgrade-btn').disabled = prestigeLevel < 1;
+        document.querySelector('#enlightenedClicker .upgrade-btn').disabled = prestigeLevel < 3;
+        document.querySelector('#nirvanaClicker .upgrade-btn').disabled = prestigeLevel < 5;
     }
 
     // Update auto clicker
@@ -226,15 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const eternalBonus = eternalClickerCount * 100000000;
             const immortalBonus = immortalClickerCount * 250000000;
             const ascendedBonus = ascendedClickerCount * 500000000;
+            const transcendentBonus = transcendentClickerCount * 1000000000;
+            const enlightenedBonus = enlightenedClickerCount * 2500000000;
+            const nirvanaBonus = nirvanaClickerCount * 5000000000;
+            
             pointsPerSecond = (basePoints + megaBonus + ultimateBonus + infinityBonus + godBonus + 
                 divineBonus + cosmicBonus + omnipotentBonus + galaxyBonus + universalBonus + dimensionalBonus +
-                quantumBonus + realityBonus + infinityPlusBonus + eternalBonus + immortalBonus + ascendedBonus) * multiplier;
+                quantumBonus + realityBonus + infinityPlusBonus + eternalBonus + immortalBonus + ascendedBonus +
+                transcendentBonus + enlightenedBonus + nirvanaBonus) * 
+                multiplier * (1 + rebirthCount * 0.2) * (1 + prestigeLevel * 0.5);
             
             autoClickerInterval = setInterval(() => {
                 points += pointsPerSecond;
                 updateDisplays();
                 saveGame();
-            }, 1000 / (1 + timeWarpCount * 0.5)); // Time Warp speeds up auto clicking
+            }, 1000 / (1 + timeWarpCount * 0.5));
         }
     }
 
@@ -493,6 +525,66 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rebirthCount >= 10) {
             rebirthCount -= 10;
             ascendedClickerCount++;
+            updateDisplays();
+            saveGame();
+        }
+    });
+
+    // Prestige system
+    document.getElementById('prestigeBtn').addEventListener('click', () => {
+        if (rebirthCount >= 100) {
+            prestigeLevel++;
+            points = 0;
+            pointsPerClick = 1;
+            autoClickerCount = 0;
+            multiplierCount = 0;
+            superClickerCount = 0;
+            megaClickerCount = 0;
+            ultimateClickerCount = 0;
+            timeWarpCount = 0;
+            infinityClickerCount = 0;
+            godClickerCount = 0;
+            divineClickerCount = 0;
+            cosmicClickerCount = 0;
+            omnipotentClickerCount = 0;
+            galaxyClickerCount = 0;
+            universalClickerCount = 0;
+            dimensionalClickerCount = 0;
+            quantumClickerCount = 0;
+            realityClickerCount = 0;
+            infinityPlusClickerCount = 0;
+            rebirthCount = 0;
+            eternalClickerCount = 0;
+            immortalClickerCount = 0;
+            ascendedClickerCount = 0;
+            updateDisplays();
+            saveGame();
+        }
+    });
+
+    // Prestige upgrades
+    document.querySelector('#transcendentClicker .upgrade-btn').addEventListener('click', () => {
+        if (prestigeLevel >= 1) {
+            prestigeLevel--;
+            transcendentClickerCount++;
+            updateDisplays();
+            saveGame();
+        }
+    });
+
+    document.querySelector('#enlightenedClicker .upgrade-btn').addEventListener('click', () => {
+        if (prestigeLevel >= 3) {
+            prestigeLevel -= 3;
+            enlightenedClickerCount++;
+            updateDisplays();
+            saveGame();
+        }
+    });
+
+    document.querySelector('#nirvanaClicker .upgrade-btn').addEventListener('click', () => {
+        if (prestigeLevel >= 5) {
+            prestigeLevel -= 5;
+            nirvanaClickerCount++;
             updateDisplays();
             saveGame();
         }

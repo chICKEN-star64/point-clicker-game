@@ -81,72 +81,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save game state
     function saveGame() {
-        const gameState = {
-            points,
-            pointsPerClick,
-            autoClickerCount,
-            multiplierCount,
-            superClickerCount,
-            megaClickerCount,
-            ultimateClickerCount,
-            timeWarpCount,
-            infinityClickerCount,
-            godClickerCount,
-            divineClickerCount,
-            cosmicClickerCount,
-            omnipotentClickerCount,
-            galaxyClickerCount,
-            universalClickerCount,
-            dimensionalClickerCount,
-            quantumClickerCount,
-            realityClickerCount,
-            infinityPlusClickerCount,
-            rebirthCount,
-            eternalClickerCount,
-            immortalClickerCount,
-            ascendedClickerCount,
-            prestigeLevel,
-            transcendentClickerCount,
-            enlightenedClickerCount,
-            nirvanaClickerCount
-        };
-        localStorage.setItem('clickerGame', JSON.stringify(gameState));
+        try {
+            const gameState = {
+                points,
+                pointsPerClick,
+                autoClickerCount,
+                multiplierCount,
+                superClickerCount,
+                megaClickerCount,
+                ultimateClickerCount,
+                timeWarpCount,
+                infinityClickerCount,
+                godClickerCount,
+                divineClickerCount,
+                cosmicClickerCount,
+                omnipotentClickerCount,
+                galaxyClickerCount,
+                universalClickerCount,
+                dimensionalClickerCount,
+                quantumClickerCount,
+                realityClickerCount,
+                infinityPlusClickerCount,
+                rebirthCount,
+                eternalClickerCount,
+                immortalClickerCount,
+                ascendedClickerCount,
+                prestigeLevel,
+                transcendentClickerCount,
+                enlightenedClickerCount,
+                nirvanaClickerCount
+            };
+            
+            // Try to save to localStorage
+            localStorage.setItem('clickerGame', JSON.stringify(gameState));
+            
+            // Also save to sessionStorage as backup
+            sessionStorage.setItem('clickerGame', JSON.stringify(gameState));
+            
+            // Save to a cookie as another backup
+            document.cookie = `clickerGame=${JSON.stringify(gameState)};max-age=31536000;path=/`;
+        } catch (error) {
+            console.error('Failed to save game:', error);
+            // Show error message to user
+            showNotification('Failed to save game. Please check your browser settings.', 'error');
+        }
     }
 
     // Load game state
     function loadGame() {
-        const savedGame = localStorage.getItem('clickerGame');
-        if (savedGame) {
-            const gameState = JSON.parse(savedGame);
-            points = gameState.points || 0;
-            pointsPerClick = gameState.pointsPerClick || 1;
-            autoClickerCount = gameState.autoClickerCount || 0;
-            multiplierCount = gameState.multiplierCount || 0;
-            superClickerCount = gameState.superClickerCount || 0;
-            megaClickerCount = gameState.megaClickerCount || 0;
-            ultimateClickerCount = gameState.ultimateClickerCount || 0;
-            timeWarpCount = gameState.timeWarpCount || 0;
-            infinityClickerCount = gameState.infinityClickerCount || 0;
-            godClickerCount = gameState.godClickerCount || 0;
-            divineClickerCount = gameState.divineClickerCount || 0;
-            cosmicClickerCount = gameState.cosmicClickerCount || 0;
-            omnipotentClickerCount = gameState.omnipotentClickerCount || 0;
-            galaxyClickerCount = gameState.galaxyClickerCount || 0;
-            universalClickerCount = gameState.universalClickerCount || 0;
-            dimensionalClickerCount = gameState.dimensionalClickerCount || 0;
-            quantumClickerCount = gameState.quantumClickerCount || 0;
-            realityClickerCount = gameState.realityClickerCount || 0;
-            infinityPlusClickerCount = gameState.infinityPlusClickerCount || 0;
-            rebirthCount = gameState.rebirthCount || 0;
-            eternalClickerCount = gameState.eternalClickerCount || 0;
-            immortalClickerCount = gameState.immortalClickerCount || 0;
-            ascendedClickerCount = gameState.ascendedClickerCount || 0;
-            prestigeLevel = gameState.prestigeLevel || 0;
-            transcendentClickerCount = gameState.transcendentClickerCount || 0;
-            enlightenedClickerCount = gameState.enlightenedClickerCount || 0;
-            nirvanaClickerCount = gameState.nirvanaClickerCount || 0;
+        try {
+            // Try to load from localStorage first
+            let savedGame = localStorage.getItem('clickerGame');
+            
+            // If not found in localStorage, try sessionStorage
+            if (!savedGame) {
+                savedGame = sessionStorage.getItem('clickerGame');
+            }
+            
+            // If still not found, try to get from cookie
+            if (!savedGame) {
+                const cookies = document.cookie.split(';');
+                const gameCookie = cookies.find(cookie => cookie.trim().startsWith('clickerGame='));
+                if (gameCookie) {
+                    savedGame = gameCookie.split('=')[1];
+                }
+            }
+            
+            if (savedGame) {
+                const gameState = JSON.parse(savedGame);
+                points = gameState.points || 0;
+                pointsPerClick = gameState.pointsPerClick || 1;
+                autoClickerCount = gameState.autoClickerCount || 0;
+                multiplierCount = gameState.multiplierCount || 0;
+                superClickerCount = gameState.superClickerCount || 0;
+                megaClickerCount = gameState.megaClickerCount || 0;
+                ultimateClickerCount = gameState.ultimateClickerCount || 0;
+                timeWarpCount = gameState.timeWarpCount || 0;
+                infinityClickerCount = gameState.infinityClickerCount || 0;
+                godClickerCount = gameState.godClickerCount || 0;
+                divineClickerCount = gameState.divineClickerCount || 0;
+                cosmicClickerCount = gameState.cosmicClickerCount || 0;
+                omnipotentClickerCount = gameState.omnipotentClickerCount || 0;
+                galaxyClickerCount = gameState.galaxyClickerCount || 0;
+                universalClickerCount = gameState.universalClickerCount || 0;
+                dimensionalClickerCount = gameState.dimensionalClickerCount || 0;
+                quantumClickerCount = gameState.quantumClickerCount || 0;
+                realityClickerCount = gameState.realityClickerCount || 0;
+                infinityPlusClickerCount = gameState.infinityPlusClickerCount || 0;
+                rebirthCount = gameState.rebirthCount || 0;
+                eternalClickerCount = gameState.eternalClickerCount || 0;
+                immortalClickerCount = gameState.immortalClickerCount || 0;
+                ascendedClickerCount = gameState.ascendedClickerCount || 0;
+                prestigeLevel = gameState.prestigeLevel || 0;
+                transcendentClickerCount = gameState.transcendentClickerCount || 0;
+                enlightenedClickerCount = gameState.enlightenedClickerCount || 0;
+                nirvanaClickerCount = gameState.nirvanaClickerCount || 0;
+                
+                showNotification('Game loaded successfully!', 'success');
+            }
+        } catch (error) {
+            console.error('Failed to load game:', error);
+            showNotification('Failed to load game. Starting fresh.', 'error');
         }
     }
+
+    // Add notification system
+    function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Add auto-save interval
+    setInterval(saveGame, 30000); // Save every 30 seconds
+
+    // Add save on page unload
+    window.addEventListener('beforeunload', saveGame);
 
     // Update displays
     function updateDisplays() {

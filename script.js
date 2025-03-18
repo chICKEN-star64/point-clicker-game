@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Divine Clicker upgrade
-    document.getElementById('divineClicker').addEventListener('click', () => {
+    document.querySelector('#divineClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 100000) {
             points -= 100000;
             divineClickerCount++;
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Cosmic Clicker upgrade
-    document.getElementById('cosmicClicker').addEventListener('click', () => {
+    document.querySelector('#cosmicClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 500000) {
             points -= 500000;
             cosmicClickerCount++;
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Omnipotent Clicker upgrade
-    document.getElementById('omnipotentClicker').addEventListener('click', () => {
+    document.querySelector('#omnipotentClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 1000000) {
             points -= 1000000;
             omnipotentClickerCount++;
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Galaxy Clicker upgrade
-    document.getElementById('galaxyClicker').addEventListener('click', () => {
+    document.querySelector('#galaxyClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 2500000) {
             points -= 2500000;
             galaxyClickerCount++;
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Universal Clicker upgrade
-    document.getElementById('universalClicker').addEventListener('click', () => {
+    document.querySelector('#universalClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 5000000) {
             points -= 5000000;
             universalClickerCount++;
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Dimensional Clicker upgrade
-    document.getElementById('dimensionalClicker').addEventListener('click', () => {
+    document.querySelector('#dimensionalClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 10000000) {
             points -= 10000000;
             dimensionalClickerCount++;
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Quantum Clicker upgrade
-    document.getElementById('quantumClicker').addEventListener('click', () => {
+    document.querySelector('#quantumClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 25000000) {
             points -= 25000000;
             quantumClickerCount++;
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Reality Clicker upgrade
-    document.getElementById('realityClicker').addEventListener('click', () => {
+    document.querySelector('#realityClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 50000000) {
             points -= 50000000;
             realityClickerCount++;
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Infinity Plus Clicker upgrade
-    document.getElementById('infinityPlusClicker').addEventListener('click', () => {
+    document.querySelector('#infinityPlusClicker .upgrade-btn').addEventListener('click', () => {
         if (points >= 100000000) {
             points -= 100000000;
             infinityPlusClickerCount++;

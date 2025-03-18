@@ -79,76 +79,89 @@ document.addEventListener('DOMContentLoaded', () => {
     const rebirthCountDisplay = document.getElementById('rebirthCount');
     const rebirthButton = document.getElementById('rebirthButton');
 
+    // Initialize IndexedDB
+    let db;
+    const request = indexedDB.open('ClickerGameDB', 1);
+
+    request.onerror = (event) => {
+        console.error('Database error:', event.target.error);
+        showNotification('Failed to initialize save system.', 'error');
+    };
+
+    request.onupgradeneeded = (event) => {
+        db = event.target.result;
+        if (!db.objectStoreNames.contains('gameState')) {
+            db.createObjectStore('gameState', { keyPath: 'id' });
+        }
+    };
+
+    request.onsuccess = (event) => {
+        db = event.target.result;
+        loadGame(); // Load game after DB is ready
+    };
+
     // Save game state
     function saveGame() {
-        try {
-            const gameState = {
-                points,
-                pointsPerClick,
-                autoClickerCount,
-                multiplierCount,
-                superClickerCount,
-                megaClickerCount,
-                ultimateClickerCount,
-                timeWarpCount,
-                infinityClickerCount,
-                godClickerCount,
-                divineClickerCount,
-                cosmicClickerCount,
-                omnipotentClickerCount,
-                galaxyClickerCount,
-                universalClickerCount,
-                dimensionalClickerCount,
-                quantumClickerCount,
-                realityClickerCount,
-                infinityPlusClickerCount,
-                rebirthCount,
-                eternalClickerCount,
-                immortalClickerCount,
-                ascendedClickerCount,
-                prestigeLevel,
-                transcendentClickerCount,
-                enlightenedClickerCount,
-                nirvanaClickerCount
-            };
-            
-            // Try to save to localStorage
-            localStorage.setItem('clickerGame', JSON.stringify(gameState));
-            
-            // Also save to sessionStorage as backup
-            sessionStorage.setItem('clickerGame', JSON.stringify(gameState));
-            
-            // Save to a cookie as another backup
-            document.cookie = `clickerGame=${JSON.stringify(gameState)};max-age=31536000;path=/`;
-        } catch (error) {
-            console.error('Failed to save game:', error);
-            // Show error message to user
-            showNotification('Failed to save game. Please check your browser settings.', 'error');
-        }
+        if (!db) return;
+
+        const transaction = db.transaction(['gameState'], 'readwrite');
+        const store = transaction.objectStore('gameState');
+        
+        const gameState = {
+            id: 'currentGame',
+            points,
+            pointsPerClick,
+            autoClickerCount,
+            multiplierCount,
+            superClickerCount,
+            megaClickerCount,
+            ultimateClickerCount,
+            timeWarpCount,
+            infinityClickerCount,
+            godClickerCount,
+            divineClickerCount,
+            cosmicClickerCount,
+            omnipotentClickerCount,
+            galaxyClickerCount,
+            universalClickerCount,
+            dimensionalClickerCount,
+            quantumClickerCount,
+            realityClickerCount,
+            infinityPlusClickerCount,
+            rebirthCount,
+            eternalClickerCount,
+            immortalClickerCount,
+            ascendedClickerCount,
+            prestigeLevel,
+            transcendentClickerCount,
+            enlightenedClickerCount,
+            nirvanaClickerCount,
+            lastSaved: Date.now()
+        };
+
+        const request = store.put(gameState);
+
+        request.onsuccess = () => {
+            console.log('Game saved successfully');
+        };
+
+        request.onerror = (event) => {
+            console.error('Error saving game:', event.target.error);
+            showNotification('Failed to save game.', 'error');
+        };
     }
 
     // Load game state
     function loadGame() {
-        try {
-            // Try to load from localStorage first
-            let savedGame = localStorage.getItem('clickerGame');
-            
-            // If not found in localStorage, try sessionStorage
-            if (!savedGame) {
-                savedGame = sessionStorage.getItem('clickerGame');
-            }
-            
-            // If still not found, try to get from cookie
-            if (!savedGame) {
-                const cookies = document.cookie.split(';');
-                const gameCookie = cookies.find(cookie => cookie.trim().startsWith('clickerGame='));
-                if (gameCookie) {
-                    savedGame = gameCookie.split('=')[1];
-                }
-            }
-            
-            if (savedGame) {
-                const gameState = JSON.parse(savedGame);
+        if (!db) return;
+
+        const transaction = db.transaction(['gameState'], 'readonly');
+        const store = transaction.objectStore('gameState');
+        const request = store.get('currentGame');
+
+        request.onsuccess = (event) => {
+            const gameState = event.target.result;
+            if (gameState) {
                 points = gameState.points || 0;
                 pointsPerClick = gameState.pointsPerClick || 1;
                 autoClickerCount = gameState.autoClickerCount || 0;
@@ -176,13 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 transcendentClickerCount = gameState.transcendentClickerCount || 0;
                 enlightenedClickerCount = gameState.enlightenedClickerCount || 0;
                 nirvanaClickerCount = gameState.nirvanaClickerCount || 0;
-                
+
                 showNotification('Game loaded successfully!', 'success');
+                updateDisplays();
+                updateAutoClicker();
             }
-        } catch (error) {
-            console.error('Failed to load game:', error);
-            showNotification('Failed to load game. Starting fresh.', 'error');
-        }
+        };
+
+        request.onerror = (event) => {
+            console.error('Error loading game:', event.target.error);
+            showNotification('Failed to load game.', 'error');
+        };
     }
 
     // Add notification system
@@ -206,6 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add save on page unload
     window.addEventListener('beforeunload', saveGame);
+
+    // Add save on visibility change
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            saveGame();
+        }
+    });
 
     // Update displays
     function updateDisplays() {

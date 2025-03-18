@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="points-display">
+            <h2>Points: <span id="points">0</span></h2>
+            <p>Points per click: <span id="pointsPerClick">1</span></p>
+            <p>Points per second: <span id="pointsPerSecond">0</span></p>
+            <p>Multiplier: <span id="multiplierDisplay">1</span>x</p>
+            <p>Rebirths: <span id="rebirthCount">0</span></p>
+        </div>
+        <h1>Click to Earn Points!</h1>
+        <p>Click the button to earn points and buy upgrades!</p>
+        <button id="clickMe">Click Me!</button>
+        
+        <div class="upgrades-section">
+            <h3>Basic Upgrades</h3>
+            <div class="upgrade-item" id="autoClicker">
+                <span>Auto Clicker (10 points)</span>
+                <span class="count">Owned: <span id="autoClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="multiplier">
+                <span>Point Multiplier (50 points)</span>
+                <span class="count">Owned: <span id="multiplierCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="superClicker">
+                <span>Super Clicker (100 points)</span>
+                <span class="count">Owned: <span id="superClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            
+            <h3>Advanced Upgrades</h3>
+            <div class="upgrade-item" id="megaClicker">
+                <span>Mega Clicker (500 points)</span>
+                <span class="count">Owned: <span id="megaClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="ultimateClicker">
+                <span>Ultimate Clicker (1000 points)</span>
+                <span class="count">Owned: <span id="ultimateClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            
+            <h3>Legendary Upgrades</h3>
+            <div class="upgrade-item" id="timeWarp">
+                <span>Time Warp (5000 points)</span>
+                <span class="count">Owned: <span id="timeWarpCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="infinityClicker">
+                <span>Infinity Clicker (10000 points)</span>
+                <span class="count">Owned: <span id="infinityClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="godClicker">
+                <span>God Clicker (50000 points)</span>
+                <span class="count">Owned: <span id="godClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+
+            <h3>Godly Upgrades</h3>
+            <div class="upgrade-item" id="divineClicker">
+                <span>Divine Clicker (100000 points)</span>
+                <span class="count">Owned: <span id="divineClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="cosmicClicker">
+                <span>Cosmic Clicker (500000 points)</span>
+                <span class="count">Owned: <span id="cosmicClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+            <div class="upgrade-item" id="omnipotentClicker">
+                <span>Omnipotent Clicker (1000000 points)</span>
+                <span class="count">Owned: <span id="omnipotentClickerCount">0</span></span>
+                <button class="upgrade-btn" disabled>Buy</button>
+            </div>
+        </div>
+
+        <div class="rebirth-section">
+            <h3>Rebirth System</h3>
+            <p>Rebirth to start over with powerful permanent upgrades!</p>
+            <div class="rebirth-info">
+                <p>Points needed for rebirth: <span id="rebirthCost">1000000</span></p>
+                <p>Rebirth multiplier: <span id="rebirthMultiplier">1</span>x</p>
+            </div>
+            <button id="rebirthBtn" class="rebirth-btn" disabled>Rebirth</button>
+            
+            <div class="rebirth-upgrades">
+                <h4>Permanent Upgrades</h4>
+                <div class="upgrade-item" id="eternalClicker">
+                    <span>Eternal Clicker (1 Rebirth)</span>
+                    <span class="count">Owned: <span id="eternalClickerCount">0</span></span>
+                    <button class="upgrade-btn" disabled>Buy</button>
+                </div>
+                <div class="upgrade-item" id="immortalClicker">
+                    <span>Immortal Clicker (5 Rebirths)</span>
+                    <span class="count">Owned: <span id="immortalClickerCount">0</span></span>
+                    <button class="upgrade-btn" disabled>Buy</button>
+                </div>
+                <div class="upgrade-item" id="ascendedClicker">
+                    <span>Ascended Clicker (10 Rebirths)</span>
+                    <span class="count">Owned: <span id="ascendedClickerCount">0</span></span>
+                    <button class="upgrade-btn" disabled>Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -152,31 +152,31 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDisplays() {
         pointsDisplay.textContent = Math.floor(points);
         pointsPerClickDisplay.textContent = Math.floor(pointsPerClick);
-        multiplierDisplay.textContent = Math.floor(1 + multiplierCount * 0.5);
+        multiplierDisplay.textContent = Math.floor(1 + multiplierCount * 0.3);
         rebirthCountDisplay.textContent = rebirthCount;
         
         // Update points per second display
-        const basePointsPerSecond = autoClickerCount * (1 + multiplierCount * 0.5);
-        const timeWarpBonus = timeWarpCount * 0.5;
-        const infinityBonus = infinityClickerCount * 2;
-        const godBonus = godClickerCount * 5;
-        const divineBonus = divineClickerCount * 10;
-        const cosmicBonus = cosmicClickerCount * 25;
-        const omnipotentBonus = omnipotentClickerCount * 50;
-        const galaxyBonus = galaxyClickerCount * 100;
-        const universalBonus = universalClickerCount * 250;
-        const dimensionalBonus = dimensionalClickerCount * 500;
-        const quantumBonus = quantumClickerCount * 1000;
-        const realityBonus = realityClickerCount * 2500;
-        const infinityPlusBonus = infinityPlusClickerCount * 5000;
-        const eternalBonus = eternalClickerCount * 10000;
-        const immortalBonus = immortalClickerCount * 25000;
-        const ascendedBonus = ascendedClickerCount * 50000;
+        const basePointsPerSecond = autoClickerCount * (1 + multiplierCount * 0.3);
+        const timeWarpBonus = timeWarpCount * 0.3;
+        const infinityBonus = infinityClickerCount * 1.5;
+        const godBonus = godClickerCount * 3;
+        const divineBonus = divineClickerCount * 6;
+        const cosmicBonus = cosmicClickerCount * 15;
+        const omnipotentBonus = omnipotentClickerCount * 30;
+        const galaxyBonus = galaxyClickerCount * 60;
+        const universalBonus = universalClickerCount * 150;
+        const dimensionalBonus = dimensionalClickerCount * 300;
+        const quantumBonus = quantumClickerCount * 600;
+        const realityBonus = realityClickerCount * 1500;
+        const infinityPlusBonus = infinityPlusClickerCount * 3000;
+        const eternalBonus = eternalClickerCount * 6000;
+        const immortalBonus = immortalClickerCount * 15000;
+        const ascendedBonus = ascendedClickerCount * 30000;
         
         const totalPointsPerSecond = (basePointsPerSecond + timeWarpBonus + infinityBonus + godBonus + 
             divineBonus + cosmicBonus + omnipotentBonus + galaxyBonus + universalBonus + dimensionalBonus +
             quantumBonus + realityBonus + infinityPlusBonus + eternalBonus + immortalBonus + ascendedBonus) * 
-            (1 + rebirthCount * 0.2);
+            (1 + rebirthCount * 0.1);
         
         pointsPerSecondDisplay.textContent = Math.floor(totalPointsPerSecond);
         
@@ -203,18 +203,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ascendedClickerCount').textContent = ascendedClickerCount;
         
         // Update upgrade buttons
-        autoClickerBtn.disabled = points < 10;
-        multiplierBtn.disabled = points < 50;
-        superClickerBtn.disabled = points < 100;
-        megaClickerBtn.disabled = points < 500;
-        ultimateClickerBtn.disabled = points < 1000;
-        timeWarpBtn.disabled = points < 5000;
-        infinityClickerBtn.disabled = points < 10000;
-        godClickerBtn.disabled = points < 50000;
+        autoClickerBtn.disabled = points < 15;
+        multiplierBtn.disabled = points < 75;
+        superClickerBtn.disabled = points < 150;
+        megaClickerBtn.disabled = points < 750;
+        ultimateClickerBtn.disabled = points < 1500;
+        timeWarpBtn.disabled = points < 7500;
+        infinityClickerBtn.disabled = points < 15000;
+        godClickerBtn.disabled = points < 75000;
         rebirthButton.disabled = points < 1000000000;
         
         document.getElementById('prestigeLevel').textContent = prestigeLevel;
-        document.getElementById('prestigeMultiplier').textContent = (1 + prestigeLevel * 0.5).toFixed(1);
+        document.getElementById('prestigeMultiplier').textContent = (1 + prestigeLevel * 0.3).toFixed(1);
         document.getElementById('transcendentClickerCount').textContent = transcendentClickerCount;
         document.getElementById('enlightenedClickerCount').textContent = enlightenedClickerCount;
         document.getElementById('nirvanaClickerCount').textContent = nirvanaClickerCount;
@@ -236,43 +236,43 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (autoClickerCount > 0) {
             const basePoints = pointsPerClick * autoClickerCount;
-            const megaBonus = megaClickerCount * 5;
-            const ultimateBonus = ultimateClickerCount * 10;
-            const infinityBonus = infinityClickerCount * 100;
-            const godBonus = godClickerCount * 1000;
-            const divineBonus = divineClickerCount * 10000;
-            const cosmicBonus = cosmicClickerCount * 50000;
-            const omnipotentBonus = omnipotentClickerCount * 100000;
-            const galaxyBonus = galaxyClickerCount * 250000;
-            const universalBonus = universalClickerCount * 500000;
-            const dimensionalBonus = dimensionalClickerCount * 1000000;
-            const quantumBonus = quantumClickerCount * 2500000;
-            const realityBonus = realityClickerCount * 5000000;
-            const infinityPlusBonus = infinityPlusClickerCount * 10000000;
-            const eternalBonus = eternalClickerCount * 100000000;
-            const immortalBonus = immortalClickerCount * 250000000;
-            const ascendedBonus = ascendedClickerCount * 500000000;
-            const transcendentBonus = transcendentClickerCount * 1000000000;
-            const enlightenedBonus = enlightenedClickerCount * 2500000000;
-            const nirvanaBonus = nirvanaClickerCount * 5000000000;
+            const megaBonus = megaClickerCount * 3;
+            const ultimateBonus = ultimateClickerCount * 6;
+            const infinityBonus = infinityClickerCount * 60;
+            const godBonus = godClickerCount * 600;
+            const divineBonus = divineClickerCount * 6000;
+            const cosmicBonus = cosmicClickerCount * 30000;
+            const omnipotentBonus = omnipotentClickerCount * 60000;
+            const galaxyBonus = galaxyClickerCount * 150000;
+            const universalBonus = universalClickerCount * 300000;
+            const dimensionalBonus = dimensionalClickerCount * 600000;
+            const quantumBonus = quantumClickerCount * 1500000;
+            const realityBonus = realityClickerCount * 3000000;
+            const infinityPlusBonus = infinityPlusClickerCount * 6000000;
+            const eternalBonus = eternalClickerCount * 60000000;
+            const immortalBonus = immortalClickerCount * 150000000;
+            const ascendedBonus = ascendedClickerCount * 300000000;
+            const transcendentBonus = transcendentClickerCount * 600000000;
+            const enlightenedBonus = enlightenedClickerCount * 1500000000;
+            const nirvanaBonus = nirvanaClickerCount * 3000000000;
             
             pointsPerSecond = (basePoints + megaBonus + ultimateBonus + infinityBonus + godBonus + 
                 divineBonus + cosmicBonus + omnipotentBonus + galaxyBonus + universalBonus + dimensionalBonus +
                 quantumBonus + realityBonus + infinityPlusBonus + eternalBonus + immortalBonus + ascendedBonus +
                 transcendentBonus + enlightenedBonus + nirvanaBonus) * 
-                multiplier * (1 + rebirthCount * 0.2) * (1 + prestigeLevel * 0.5);
+                multiplier * (1 + rebirthCount * 0.1) * (1 + prestigeLevel * 0.3);
             
             autoClickerInterval = setInterval(() => {
                 points += pointsPerSecond;
                 updateDisplays();
                 saveGame();
-            }, 1000 / (1 + timeWarpCount * 0.5));
+            }, 1000 / (1 + timeWarpCount * 0.3));
         }
     }
 
     // Click handler
     button.addEventListener('click', () => {
-        points += pointsPerClick * (1 + multiplierCount * 0.5) * (1 + rebirthCount * 0.2);
+        points += pointsPerClick * (1 + multiplierCount * 0.3) * (1 + rebirthCount * 0.1);
         updateDisplays();
         saveGame();
         
@@ -285,8 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto Clicker upgrade
     autoClickerBtn.addEventListener('click', () => {
-        if (points >= 10) {
-            points -= 10;
+        if (points >= 15) {
+            points -= 15;
             autoClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -296,10 +296,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Multiplier upgrade
     multiplierBtn.addEventListener('click', () => {
-        if (points >= 50) {
-            points -= 50;
+        if (points >= 75) {
+            points -= 75;
             multiplierCount++;
-            multiplier *= 2;
+            multiplier *= 1.5;
             updateAutoClicker();
             updateDisplays();
             saveGame();
@@ -308,10 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Super Clicker upgrade
     superClickerBtn.addEventListener('click', () => {
-        if (points >= 100) {
-            points -= 100;
+        if (points >= 150) {
+            points -= 150;
             superClickerCount++;
-            pointsPerClick *= 2;
+            pointsPerClick *= 1.5;
             updateAutoClicker();
             updateDisplays();
             saveGame();
@@ -320,10 +320,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mega Clicker upgrade
     megaClickerBtn.addEventListener('click', () => {
-        if (points >= 500) {
-            points -= 500;
+        if (points >= 750) {
+            points -= 750;
             megaClickerCount++;
-            pointsPerClick *= 2;
+            pointsPerClick *= 1.5;
             updateAutoClicker();
             updateDisplays();
             saveGame();
@@ -332,10 +332,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ultimate Clicker upgrade
     ultimateClickerBtn.addEventListener('click', () => {
-        if (points >= 1000) {
-            points -= 1000;
+        if (points >= 1500) {
+            points -= 1500;
             ultimateClickerCount++;
-            pointsPerClick *= 2;
+            pointsPerClick *= 1.5;
             updateAutoClicker();
             updateDisplays();
             saveGame();
@@ -344,8 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Time Warp upgrade
     timeWarpBtn.addEventListener('click', () => {
-        if (points >= 5000) {
-            points -= 5000;
+        if (points >= 7500) {
+            points -= 7500;
             timeWarpCount++;
             updateAutoClicker();
             updateDisplays();
@@ -355,8 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Infinity Clicker upgrade
     infinityClickerBtn.addEventListener('click', () => {
-        if (points >= 10000) {
-            points -= 10000;
+        if (points >= 15000) {
+            points -= 15000;
             infinityClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -366,8 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // God Clicker upgrade
     godClickerBtn.addEventListener('click', () => {
-        if (points >= 50000) {
-            points -= 50000;
+        if (points >= 75000) {
+            points -= 75000;
             godClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -377,8 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Divine Clicker upgrade
     document.querySelector('#divineClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 100000) {
-            points -= 100000;
+        if (points >= 150000) {
+            points -= 150000;
             divineClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -388,8 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cosmic Clicker upgrade
     document.querySelector('#cosmicClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 500000) {
-            points -= 500000;
+        if (points >= 750000) {
+            points -= 750000;
             cosmicClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -399,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Omnipotent Clicker upgrade
     document.querySelector('#omnipotentClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 1000000) {
-            points -= 1000000;
+        if (points >= 1500000) {
+            points -= 1500000;
             omnipotentClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -410,8 +410,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Galaxy Clicker upgrade
     document.querySelector('#galaxyClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 2500000) {
-            points -= 2500000;
+        if (points >= 3750000) {
+            points -= 3750000;
             galaxyClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -421,8 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Universal Clicker upgrade
     document.querySelector('#universalClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 5000000) {
-            points -= 5000000;
+        if (points >= 7500000) {
+            points -= 7500000;
             universalClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -432,8 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dimensional Clicker upgrade
     document.querySelector('#dimensionalClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 10000000) {
-            points -= 10000000;
+        if (points >= 15000000) {
+            points -= 15000000;
             dimensionalClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -443,8 +443,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Quantum Clicker upgrade
     document.querySelector('#quantumClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 25000000) {
-            points -= 25000000;
+        if (points >= 37500000) {
+            points -= 37500000;
             quantumClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -454,8 +454,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reality Clicker upgrade
     document.querySelector('#realityClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 50000000) {
-            points -= 50000000;
+        if (points >= 75000000) {
+            points -= 75000000;
             realityClickerCount++;
             updateAutoClicker();
             updateDisplays();
@@ -465,8 +465,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Infinity Plus Clicker upgrade
     document.querySelector('#infinityPlusClicker .upgrade-btn').addEventListener('click', () => {
-        if (points >= 100000000) {
-            points -= 100000000;
+        if (points >= 150000000) {
+            points -= 150000000;
             infinityPlusClickerCount++;
             updateAutoClicker();
             updateDisplays();
